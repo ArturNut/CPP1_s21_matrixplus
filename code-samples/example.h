@@ -12,8 +12,8 @@ private:
 public:
     S21Matrix();                                                // default constructor
     S21Matrix(int rows, int cols);                              // parameterized constructor
-    S21Matrix(const S21Matrix& o);                              // copy cnstructor
-    S21Matrix(S21Matrix&& o);                                   // move cnstructor
+    S21Matrix(const S21Matrix& o);                              // copy constructor
+    S21Matrix(S21Matrix&& o);                                   // move constructor
     ~S21Matrix();                                               // destructor
 
     // some operators overloads

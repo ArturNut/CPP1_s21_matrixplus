@@ -20,11 +20,11 @@ S21Matrix::S21Matrix(const S21Matrix& o) : _rows(o._rows), _cols(o._cols) {
     std::memcpy(_p, o._p, o._rows * o._cols * sizeof(double));
 }
 
-S21Matrix::S21Matrix(CMatrix&& o) {
+S21Matrix::S21Matrix(S21Matrix&& o) {
     if (_rows * _cols == o._rows * o._cols) {
         std::memcpy(_p, o._p, o._cols * o._rows * sizeof(double));
     } else {
-        delete[] m_ptValues;
+        delete[] _p;
         _p = new double[o._rows * o._cols]();
         std::memcpy(_p, o._p, o._cols * o._rows * sizeof(double));
     }
@@ -32,7 +32,7 @@ S21Matrix::S21Matrix(CMatrix&& o) {
     _cols = o._cols;
     delete o._p;
     o._rows = 0;
-    o._cpls = 0;
+    o._cols = 0;
 }
 
 S21Matrix::~S21Matrix() {
