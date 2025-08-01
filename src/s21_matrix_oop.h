@@ -6,7 +6,7 @@ class S21Matrix {
   int rows_, cols_;  // rows and columns attributes
   double* matrix_;   // pointer to the memory where the matrix will be allocated
   void resize(int newRows, int newCols);
-  int plus_or_minus_pattern(int i, int j);
+  int plus_or_minus_pattern(int i, int j) const;
 
  public:
   S21Matrix();                        // default constructor
@@ -53,20 +53,20 @@ class S21Matrix {
   void MulMatrix(const S21Matrix& other);
 
   // Создает новую транспонированную матрицу из текущей и возвращает ее.
-  S21Matrix Transpose();
+  S21Matrix Transpose() const;
 
   // Вычисляет матрицу алгебраических дополнений текущей матрицы и возвращает
   // ее.
-  S21Matrix CalcComplements();
+  S21Matrix CalcComplements() const;
 
   // Вычисляет и возвращает определитель текущей матрицы.
-  double Determinant();
+  double Determinant() const;
 
   // Вычисляет и возвращает обратную матрицу.
-  S21Matrix InverseMatrix();
+  S21Matrix InverseMatrix() const;
 
   // получение матрицы вычеркиванием заданной строки g и столбца k
-  S21Matrix minor_of_the_element(int g, int k);
+  S21Matrix minor_of_the_element(int g, int k) const;
 };
 
 #endif

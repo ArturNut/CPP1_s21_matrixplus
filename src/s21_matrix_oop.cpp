@@ -156,7 +156,7 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
 }
 
 // Создает новую транспонированную матрицу из текущей и возвращает ее.
-S21Matrix S21Matrix::Transpose() {
+S21Matrix S21Matrix::Transpose() const {
   S21Matrix res(cols_, rows_);
 
   for (auto i = 0; i < cols_; i++) {
@@ -168,7 +168,7 @@ S21Matrix S21Matrix::Transpose() {
 }
 
 // Вычисляет матрицу алгебраических дополнений текущей матрицы и возвращает ее.
-S21Matrix S21Matrix::CalcComplements() {
+S21Matrix S21Matrix::CalcComplements() const {
   if (rows_ != cols_) {
     throw std::out_of_range("Матрица не является квадратной");
   }
@@ -190,7 +190,7 @@ S21Matrix S21Matrix::CalcComplements() {
   return calc;
 }
 
-int S21Matrix::plus_or_minus_pattern(int i, int j) {
+int S21Matrix::plus_or_minus_pattern(int i, int j) const {
   int result = 1;
   if (i % 2 == 0) {
     result = (j % 2 == 0 ? 1 : -1);
@@ -201,7 +201,7 @@ int S21Matrix::plus_or_minus_pattern(int i, int j) {
 }
 
 // Вычисляет и возвращает определитель текущей матрицы.
-double S21Matrix::Determinant() {
+double S21Matrix::Determinant() const {
   if (rows_ != cols_) {
     throw std::out_of_range("Матрица не является квадратной");
   }
@@ -226,7 +226,7 @@ double S21Matrix::Determinant() {
 }
 
 // получение матрицы вычеркиванием заданной строки g и столбца k
-S21Matrix S21Matrix::minor_of_the_element(int g, int k) {
+S21Matrix S21Matrix::minor_of_the_element(int g, int k) const {
   S21Matrix res(rows_ - 1, cols_ - 1);
   int sub_i = 0;
   int sub_j = 0;
@@ -251,7 +251,7 @@ S21Matrix S21Matrix::minor_of_the_element(int g, int k) {
 }
 
 // Вычисляет и возвращает обратную матрицу.
-S21Matrix S21Matrix::InverseMatrix() {
+S21Matrix S21Matrix::InverseMatrix() const {
   if (rows_ != cols_) {
     throw std::out_of_range("Матрица не является квадратной");
   }
