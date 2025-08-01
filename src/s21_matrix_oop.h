@@ -22,9 +22,9 @@ class S21Matrix {
   void setCols(int newCols);
 
   // some operators overloads
-  S21Matrix operator+(const S21Matrix& other);
-  S21Matrix operator-(const S21Matrix& other);
-  S21Matrix operator*(const S21Matrix& other);
+  S21Matrix operator+(const S21Matrix& other) const;
+  S21Matrix operator-(const S21Matrix& other) const;
+  S21Matrix operator*(const S21Matrix& other) const;
   bool operator==(const S21Matrix& other) const;
   S21Matrix& operator=(const S21Matrix& other);
   S21Matrix& operator+=(const S21Matrix& other);

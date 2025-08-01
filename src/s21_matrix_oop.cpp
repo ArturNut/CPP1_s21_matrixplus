@@ -271,19 +271,19 @@ S21Matrix S21Matrix::InverseMatrix() const {
 }
 
 // operator overload example
-S21Matrix S21Matrix::operator+(const S21Matrix& other) {
+S21Matrix S21Matrix::operator+(const S21Matrix& other) const {
   S21Matrix res(*this);
   res.SumMatrix(other);
   return res;
 }
 
-S21Matrix S21Matrix::operator-(const S21Matrix& other) {
+S21Matrix S21Matrix::operator-(const S21Matrix& other) const {
   S21Matrix res(*this);
   res.SubMatrix(other);
   return res;
 }
 
-S21Matrix S21Matrix::operator*(const S21Matrix& other) {
+S21Matrix S21Matrix::operator*(const S21Matrix& other) const {
   S21Matrix res(*this);
   res.MulMatrix(other);
   return res;
