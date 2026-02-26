@@ -135,8 +135,9 @@ void S21Matrix::MulNumber(const double num) {
 void S21Matrix::MulMatrix(const S21Matrix& other) {
   if (cols_ != other.rows_) {
     throw std::out_of_range(
-        "Количество столбцов в матрице 'A' должно быть равно количеству строк "
-        "в матрице 'B'");
+        "The number of columns in matrix 'A' must be equal to the number of "
+        "rows "
+        "in matrix 'B'");
   }
 
   S21Matrix res(rows_, other.cols_);
@@ -169,7 +170,7 @@ S21Matrix S21Matrix::Transpose() const {
 // Вычисляет матрицу алгебраических дополнений текущей матрицы и возвращает ее.
 S21Matrix S21Matrix::CalcComplements() const {
   if (rows_ != cols_) {
-    throw std::out_of_range("Матрица не является квадратной");
+    throw std::out_of_range("The matrix is ​​not square");
   }
 
   if (rows_ == 1 && cols_ == 1) {
@@ -202,7 +203,7 @@ int S21Matrix::plus_or_minus_pattern(int i, int j) const noexcept {
 // Вычисляет и возвращает определитель текущей матрицы.
 double S21Matrix::Determinant() const {
   if (rows_ != cols_) {
-    throw std::out_of_range("Матрица не является квадратной");
+    throw std::out_of_range("The matrix is ​​not square");
   }
 
   if (rows_ == 1 && cols_ == 1) {
@@ -252,14 +253,14 @@ S21Matrix S21Matrix::minor_of_the_element(int g, int k) const {
 // Вычисляет и возвращает обратную матрицу.
 S21Matrix S21Matrix::InverseMatrix() const {
   if (rows_ != cols_) {
-    throw std::out_of_range("Матрица не является квадратной");
+    throw std::out_of_range("The matrix is ​​not square");
   }
 
   double det = Determinant();
 
   if (det == 0) {
     throw std::out_of_range(
-        "Определитель равен 0, обратной матрицы не существует");
+        "The determinant is 0, and there is no inverse matrix");
   }
 
   S21Matrix res = CalcComplements();
