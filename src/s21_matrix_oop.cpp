@@ -101,8 +101,8 @@ void S21Matrix::SumMatrix(const S21Matrix& other) {
         "Incorrect input, matrices should have the same size");
   }
 
-  for (auto i = 0; i < rows_; i++) {
-    for (auto j = 0; j < cols_; j++) {
+  for (int i = 0; i < rows_; i++) {
+    for (int j = 0; j < cols_; j++) {
       (*this)(i, j) = (*this)(i, j) + other(i, j);
     }
   }
@@ -115,8 +115,8 @@ void S21Matrix::SubMatrix(const S21Matrix& other) {
         "Incorrect input, matrices should have the same size");
   }
 
-  for (auto i = 0; i < rows_; i++) {
-    for (auto j = 0; j < cols_; j++) {
+  for (int i = 0; i < rows_; i++) {
+    for (int j = 0; j < cols_; j++) {
       (*this)(i, j) = (*this)(i, j) - other(i, j);
     }
   }
@@ -124,8 +124,8 @@ void S21Matrix::SubMatrix(const S21Matrix& other) {
 
 // Умножает текущую матрицу на число.
 void S21Matrix::MulNumber(const double num) {
-  for (auto i = 0; i < rows_; i++) {
-    for (auto j = 0; j < cols_; j++) {
+  for (int i = 0; i < rows_; i++) {
+    for (int j = 0; j < cols_; j++) {
       (*this)(i, j) = (*this)(i, j) * num;
     }
   }
@@ -143,8 +143,8 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
   S21Matrix res(rows_, other.cols_);
   double sum = 0.0;
 
-  for (auto i = 0; i < rows_; i++) {
-    for (auto j = 0; j < other.cols_; j++) {
+  for (int i = 0; i < rows_; i++) {
+    for (int j = 0; j < other.cols_; j++) {
       for (int k = 0; k < other.rows_; k++) {
         sum = sum + (*this)(i, k) * other(k, j);
       }
@@ -159,8 +159,8 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
 S21Matrix S21Matrix::Transpose() const {
   S21Matrix res(cols_, rows_);
 
-  for (auto i = 0; i < cols_; i++) {
-    for (auto j = 0; j < rows_; j++) {
+  for (int i = 0; i < cols_; i++) {
+    for (int j = 0; j < rows_; j++) {
       res(i, j) = (*this)(j, i);
     }
   }
@@ -231,12 +231,12 @@ S21Matrix S21Matrix::minor_of_the_element(int g, int k) const {
   int sub_i = 0;
   int sub_j = 0;
 
-  for (auto i = 0; i < rows_; i++) {
+  for (int i = 0; i < rows_; i++) {
     if (i == g) {
       continue;
     }
 
-    for (auto j = 0; j < cols_; j++) {
+    for (int j = 0; j < cols_; j++) {
       if (j == k) {
         continue;
       }
