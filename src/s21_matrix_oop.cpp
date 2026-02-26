@@ -24,7 +24,8 @@ S21Matrix::S21Matrix(int rows, int cols) : rows_(rows), cols_(cols) {
 }
 
 // copy constructor
-S21Matrix::S21Matrix(const S21Matrix& o) noexcept : rows_(o.rows_), cols_(o.cols_) {
+S21Matrix::S21Matrix(const S21Matrix& o) noexcept
+    : rows_(o.rows_), cols_(o.cols_) {
   matrix_ = new double[o.rows_ * o.cols_]();
   std::memcpy(matrix_, o.matrix_, o.rows_ * o.cols_ * sizeof(double));
 }
