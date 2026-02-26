@@ -6,18 +6,18 @@ class S21Matrix {
   int rows_, cols_;  // rows and columns attributes
   double* matrix_;   // pointer to the memory where the matrix will be allocated
   void resize(int newRows, int newCols);
-  int plus_or_minus_pattern(int i, int j) const;
+  int plus_or_minus_pattern(int i, int j) const noexcept;
 
  public:
-  S21Matrix();                        // default constructor
-  S21Matrix(int rows, int cols);      // parameterized constructor
-  S21Matrix(const S21Matrix& other);  // copy constructor
-  S21Matrix(S21Matrix&& other);       // move constructor
-  ~S21Matrix();                       // destructor
+  S21Matrix() noexcept;                        // default constructor
+  S21Matrix(int rows, int cols);               // parameterized constructor
+  S21Matrix(const S21Matrix& other) noexcept;  // copy constructor
+  S21Matrix(S21Matrix&& other) noexcept;       // move constructor
+  ~S21Matrix() noexcept;                       // destructor
 
-  int getRows() const;  // accessor
-  int getCols() const;  // accessor
-  void setRows(int newRows);  // mutator
+  int getRows() const noexcept;  // accessor
+  int getCols() const noexcept;  // accessor
+  void setRows(int newRows);     // mutator
   void setCols(int newCols);
 
   // some operators overloads
@@ -25,7 +25,7 @@ class S21Matrix {
   S21Matrix operator-(const S21Matrix& other) const;
   S21Matrix operator*(const S21Matrix& other) const;
   bool operator==(const S21Matrix& other) const;
-  S21Matrix& operator=(const S21Matrix& other);
+  S21Matrix& operator=(const S21Matrix& other) noexcept;
   S21Matrix& operator+=(const S21Matrix& other);
   S21Matrix& operator-=(const S21Matrix& other);
   S21Matrix& operator*=(const S21Matrix& other);

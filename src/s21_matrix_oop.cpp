@@ -8,7 +8,7 @@ constexpr double EPSILON = 1e-5;
 }
 
 // default constructor
-S21Matrix::S21Matrix() {
+S21Matrix::S21Matrix() noexcept {
   rows_ = 1;
   cols_ = 1;
   matrix_ = new double[rows_ * cols_]();
@@ -24,13 +24,13 @@ S21Matrix::S21Matrix(int rows, int cols) : rows_(rows), cols_(cols) {
 }
 
 // copy constructor
-S21Matrix::S21Matrix(const S21Matrix& o) : rows_(o.rows_), cols_(o.cols_) {
+S21Matrix::S21Matrix(const S21Matrix& o) noexcept : rows_(o.rows_), cols_(o.cols_) {
   matrix_ = new double[o.rows_ * o.cols_]();
   std::memcpy(matrix_, o.matrix_, o.rows_ * o.cols_ * sizeof(double));
 }
 
 // move constructor
-S21Matrix::S21Matrix(S21Matrix&& o) : rows_(o.rows_), cols_(o.cols_) {
+S21Matrix::S21Matrix(S21Matrix&& o) noexcept : rows_(o.rows_), cols_(o.cols_) {
   matrix_ = o.matrix_;
   o.matrix_ = nullptr;
   o.rows_ = 0;
@@ -38,18 +38,16 @@ S21Matrix::S21Matrix(S21Matrix&& o) : rows_(o.rows_), cols_(o.cols_) {
 }
 
 // destructor
-S21Matrix::~S21Matrix() {
+S21Matrix::~S21Matrix() noexcept {
   if (matrix_) {
     delete[] matrix_;
   }
 }
 
 // accessor
-int S21Matrix::getRows() const { return rows_; }
+int S21Matrix::getRows() const noexcept { return rows_; }
 
-int S21Matrix::getCols() const { return cols_; }
-
-// double* S21Matrix::getMatrix() const { return matrix_; }
+int S21Matrix::getCols() const noexcept { return cols_; }
 
 // mutator
 void S21Matrix::setRows(int newRows) { resize(newRows, cols_); }
@@ -190,7 +188,7 @@ S21Matrix S21Matrix::CalcComplements() const {
   return calc;
 }
 
-int S21Matrix::plus_or_minus_pattern(int i, int j) const {
+int S21Matrix::plus_or_minus_pattern(int i, int j) const noexcept {
   int result = 1;
   if (i % 2 == 0) {
     result = (j % 2 == 0 ? 1 : -1);
@@ -296,7 +294,7 @@ bool S21Matrix::operator==(const S21Matrix& other) const {
   return EqMatrix(other);
 }
 
-S21Matrix& S21Matrix::operator=(const S21Matrix& other) {
+S21Matrix& S21Matrix::operator=(const S21Matrix& other) noexcept {
   if (this != &other) {
     delete[] matrix_;
     rows_ = other.rows_;
