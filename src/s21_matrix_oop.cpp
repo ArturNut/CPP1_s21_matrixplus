@@ -182,7 +182,7 @@ S21Matrix S21Matrix::CalcComplements() const {
 
   for (int i = 0; i < rows_; i++) {
     for (int j = 0; j < cols_; j++) {
-      S21Matrix sub_matrix = (*this).minor_of_the_element(i, j);
+      S21Matrix sub_matrix = minor_of_the_element(i, j);
       sub_det = sub_matrix.Determinant();
       calc(i, j) = plus_or_minus_pattern(i, j) * sub_det;
     }
@@ -217,7 +217,7 @@ double S21Matrix::Determinant() const {
   double sub_det = 0.0;
 
   for (int k = 0; k < cols_; k++) {
-    S21Matrix sub_matrix = (*this).minor_of_the_element(0, k);
+    S21Matrix sub_matrix = minor_of_the_element(0, k);
     sub_det = sub_matrix.Determinant();
     result += (k % 2 == 0 ? 1 : -1) * (*this)(0, k) * sub_det;
   }
@@ -263,7 +263,7 @@ S21Matrix S21Matrix::InverseMatrix() const {
         "Определитель равен 0, обратной матрицы не существует");
   }
 
-  S21Matrix res = (*this).CalcComplements();
+  S21Matrix res = CalcComplements();
   res = res.Transpose();
   res.MulNumber(rows_ > 1 ? 1 / det : 1 / (det * det));
 
@@ -309,17 +309,17 @@ S21Matrix& S21Matrix::operator=(const S21Matrix& other) {
 }
 
 S21Matrix& S21Matrix::operator+=(const S21Matrix& other) {
-  (*this).SumMatrix(other);
+  SumMatrix(other);
   return *this;
 }
 
 S21Matrix& S21Matrix::operator-=(const S21Matrix& other) {
-  (*this).SubMatrix(other);
+  SubMatrix(other);
   return *this;
 }
 
 S21Matrix& S21Matrix::operator*=(const S21Matrix& other) {
-  (*this).MulMatrix(other);
+  MulMatrix(other);
   return *this;
 }
 
