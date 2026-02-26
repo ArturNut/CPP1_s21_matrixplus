@@ -290,9 +290,6 @@ S21Matrix S21Matrix::operator*(const S21Matrix& other) const {
 }
 
 bool S21Matrix::operator==(const S21Matrix& other) const {
-  if (this == &other) {
-    return true;
-  }
   return EqMatrix(other);
 }
 
