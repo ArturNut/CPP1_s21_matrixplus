@@ -257,7 +257,7 @@ S21Matrix S21Matrix::InverseMatrix() const {
 
   double det = Determinant();
 
-  if (det == 0) {
+  if (std::abs(det) < EPSILON) {
     throw std::out_of_range(
         "The determinant is 0, and there is no inverse matrix");
   }
