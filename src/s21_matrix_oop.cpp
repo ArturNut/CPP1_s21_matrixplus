@@ -76,7 +76,6 @@ void S21Matrix::resize(int newRows, int newCols) {
   cols_ = newCols;
   delete[] matrix_;
   matrix_ = matrix_temp;
-  matrix_temp = nullptr;
 }
 
 // Проверяет матрицы на равенство между собой
