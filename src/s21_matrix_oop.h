@@ -17,7 +17,6 @@ class S21Matrix {
 
   int getRows() const;  // accessor
   int getCols() const;  // accessor
-  //   double* getMatrix() const;
   void setRows(int newRows);  // mutator
   void setCols(int newCols);
 
